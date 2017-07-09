@@ -1,6 +1,6 @@
 {
   "name": "ruslotto-checker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "app to check russian lotto tickets",
   "main": "ruslotto-checker.js",
   "scripts": {
