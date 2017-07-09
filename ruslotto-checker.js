@@ -1,4 +1,6 @@
 'use strict';
+
+const config = require('config');
 const Koa = require('koa');
 const Router = require('koa-router');
 const cors = require('@koa/cors');
@@ -19,17 +21,17 @@ app.use(cors({ allowMethods: 'GET,HEAD,POST' }));
 const router = new Router({
     prefix: '/api'
 })
-  .get('/help/:draw', async ctx => {
+  .get('/help', async ctx => {
       try {
-          ctx.body = 'Get help for draw №';
+          ctx.body = 'Get help for the app';
       }
       catch (e) {
-          ctx.throw(createError(422, 'OFFERS array required'));
+          ctx.throw(createError(422, 'Unknown error'));
       }
   })
   .get('/data/:draw', async ctx => {
       try {
-          const jjConfig = eval(`new Object(${ctx.request.body})`);
+          const seekDraw = ctx.params.draw;
 
           if (!('OFFERS' in jjConfig) || !Array.isArray(jjConfig.OFFERS))
               ctx.throw(createError(422, 'OFFERS array required'));
@@ -44,7 +46,7 @@ const router = new Router({
           ctx.body = {OFFERS: resJson};
       }
       catch (e) {
-          ctx.throw(createError(422, 'OFFERS array required'));
+          ctx.throw(createError(422, 'Draw number required'));
       }
   })
   .post('/check', async ctx => {
@@ -70,4 +72,7 @@ const router = new Router({
 
 app.use(router.routes());
 
-module.exports = app;
+
+app.listen(config.get('port'), config.get('host'), () => console.log(`http://${config.get('host')}:${config.get('port')}/`));
+
+
