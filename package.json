@@ -1,11 +1,11 @@
 {
   "name": "ruslotto-checker",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "app to check russian lotto tickets",
   "main": "ruslotto-checker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postcommit": "test -d ./scripts && test -x ./scripts/set_env.sh && ./scripts/set_env.sh"
+    "postcommit": "test -d ./scripts && test -x ./scripts/set_env_and_push.sh && ./scripts/set_env_and_push.sh"
   },
   "author": "Larisa Morozhnikova",
   "license": "ISC",
