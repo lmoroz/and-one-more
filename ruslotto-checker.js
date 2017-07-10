@@ -22,9 +22,9 @@ app.use(cors({ allowMethods: 'GET,HEAD,POST' }));
 async function setDrawCacheId(ctx, next) {
   const seekDraw = ctx.params.draw;
   ctx.params.cacheName = 'ruslotto'+seekDraw+'.html';
-	console.log('ctx.params.cacheName = ',ctx.params.cacheName);
-	await next();
-	ctx.body += ' got from setDrawCacheId()';
+  console.log('ctx.params.cacheName = ',ctx.params.cacheName);
+  await next();
+  ctx.body += ' got from setDrawCacheId()';
 }
 
 const router = new Router({
